@@ -4,7 +4,9 @@ const main = async () => {
   await hackContract.deployed();
   console.log("Contract deployed to: " + hackContract.address);
 
-  
+  let txn = await hackContract.attack()
+  await txn.wait();
+  console.log("Your transaction has been mined.");
 }
 
 const runMain = async () => {
