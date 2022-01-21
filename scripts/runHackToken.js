@@ -1,10 +1,14 @@
-const main = async () => {
-  const hackTelephoneFactory = await hre.ethers.getContractFactory("HackTelephone"),
-  hackContract = await hackTelephoneFactory.deploy("0x023e90580fCda1c544C7D710c34fb9630041fEd9");
-  await hackContract.deployed();
-  console.log("Contract deployed to: " + hackContract.address);
+require("dotenv").config();
+const tokenAbi = require("artifacts/contracts/Token\.sol/Token.json");
 
-  let txn = await hackContract.attack()
+const main = async () => {
+
+  const hackToken = await new hre.ethers.Contract("0xb5C48a5a55C5af9Ef83dA548C8Cd4766F0da1b7E", tokenAbi.abi, process.env.PRIVATE_KEY);
+  const hackToken = await hackTokenFactory.deploy();
+  await hackToken.deployed();
+  console.log("Contract deployed to: " + hackToken.address);
+
+  let txn = await hackToken.attack()
   await txn.wait();
   console.log("Your transaction has been mined.");
 }
