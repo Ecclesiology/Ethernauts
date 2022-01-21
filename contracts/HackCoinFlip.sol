@@ -8,10 +8,10 @@ interface ICoinFlip {
 contract HackCoinFlip {
     bool public side;
     uint FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
-    address coinFlip;
+    ICoinFlip coinFlip;
 
     constructor(address _coinFlip) public {
-      coinFlip = _coinFlip
+      coinFlip = CoinFlip(_coinFlip);
     }
 
     function hack() public {
