@@ -8,6 +8,7 @@ interface ICoinFlip {
 }
 
 contract HackCoinFlip {
+    using SafeMath for uint256;
     bool public side;
     uint FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
     ICoinFlip coinFlipContract;
