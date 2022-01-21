@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
+import "./SafeMath.sol";
+
 interface ICoinFlip {
   function flip(bool _guess) external returns (bool);
 }
