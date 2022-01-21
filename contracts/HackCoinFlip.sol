@@ -11,7 +11,7 @@ contract HackCoinFlip {
     ICoinFlip coinFlipContract;
 
     constructor(address _coinFlipContract) public {
-      coinFlipContract = CoinFlip(_coinFlipContract);
+      coinFlipContract = ICoinFlip(_coinFlipContract);
     }
 
     function hack() public {
