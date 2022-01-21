@@ -4,10 +4,7 @@ const main = async () => {
   await hackContract.deployed();
   console.log("Contract deployed to: " + hackContract.address);
 
-  for(let i = 0; i <= 10; i++){
-    let txn = await hackContract.hack();
-    await txn.wait();
-  }
+  
 }
 
 const runMain = async () => {
