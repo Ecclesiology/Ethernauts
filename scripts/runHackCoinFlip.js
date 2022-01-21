@@ -7,7 +7,6 @@ const main = async () => {
   for(let i = 0; i <= 10; i++){
     let txn = await hackContract.hack();
     await txn.wait();
-    console.log("Total wins: " + await hackContract.consecutiveWins());
   }
 }
 
