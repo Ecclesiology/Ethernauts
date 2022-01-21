@@ -2,15 +2,13 @@ require("dotenv").config();
 const tokenAbi = require("artifacts/contracts/Token\.sol/Token.json");
 
 const main = async () => {
-
   const hackToken = await new hre.ethers.Contract("0xb5C48a5a55C5af9Ef83dA548C8Cd4766F0da1b7E", tokenAbi.abi, process.env.PRIVATE_KEY);
-  const hackToken = await hackTokenFactory.deploy();
   await hackToken.deployed();
-  console.log("Contract deployed to: " + hackToken.address);
+  console.log("Token contract: " + hackToken.address);
 
-  let txn = await hackToken.attack()
+  let txn = await hackToken.transfer(hackToken.address, "300")
   await txn.wait();
-  console.log("Your transaction has been mined.");
+  console.log("Transfer function complete.");
 }
 
 const runMain = async () => {
