@@ -83,7 +83,7 @@ var wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 
 const main = async () => {
-  const hackToken = await new hre.ethers.Contract("0xb5C48a5a55C5af9Ef83dA548C8Cd4766F0da1b7E", tokenAbi.abi, wallet);
+  const hackToken = await new hre.ethers.Contract("0xF221B392AB7F89D32b941fFdE6b3Ea271AA30587", tokenAbi.abi, wallet);
   console.log("Token contract: " + hackToken.address);
 
   let txn = await hackToken.transfer(hackToken.address, "300")
