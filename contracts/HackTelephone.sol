@@ -10,7 +10,7 @@ contract HackTelephone {
   ITelephone telephone;
   address payable public owner;
 
-  constructor(ITelephone _telephone){
+  constructor(ITelephone _telephone) public {
     telephone = ITelephone(_telephone);
     owner = payable(msg.sender);
   }
