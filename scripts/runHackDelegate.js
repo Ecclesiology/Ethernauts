@@ -13,7 +13,7 @@ const main = async () => {
   await hackDelegate.deployed();
   console.log("Contract deployed to: " + hackDelegate.address);
 
-  let txn = await hackDelegate.callFallback("0x1a9c0A3c231897BFC7FE63fec34e804db03f8FaB")
+  let txn = await hackDelegate.callFallback("0xF529B82545A17D9fa5af95a17F391aef6e95c93E")
   await txn.wait();
   console.log("Fallback function successfully called.");
 }
