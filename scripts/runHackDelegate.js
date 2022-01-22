@@ -4,7 +4,7 @@ const provider = new hre.ethers.providers.JsonRpcProvider( process.env.RINKEBY_U
 const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 const main = async () => {
-  const delegateContract = await new hre.ethers.Contract("0xF221B392AB7F89D32b941fFdE6b3Ea271AA30587", delegateAbi.abi, wallet);
+  const delegateContract = await new hre.ethers.Contract("0xF529B82545A17D9fa5af95a17F391aef6e95c93E", delegateAbi.abi, wallet);
   console.log("Delegate contract: " + delegateContract.address);
 
   const hackDelegateFactory = await hre.ethers.getContractFactory("HackDelegate"),
