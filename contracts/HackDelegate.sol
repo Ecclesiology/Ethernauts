@@ -7,7 +7,7 @@ interface IDelegate {
 
 contract HackDelegate {
   IDelegate = delegateAddress;
-  event Response(bool success, bytes data);
+  event Successful(bool success, bytes data);
 
   constructor(IDelegate _delegateAddress) public {
     delegateAddress = IDelegate(_delegateAddress);
@@ -18,6 +18,6 @@ contract HackDelegate {
       abi.encodeWithSignature("notAFunction()");
     );
 
-    emit Response(success, data);
+    emit Successful(success, data);
   }
 }
