@@ -7,12 +7,17 @@ interface IDelegate {
 
 contract HackDelegate {
   IDelegate = delegateAddress;
+  event Response(bool success, bytes data);
 
   constructor(IDelegate _delegateAddress){
     delegateAddress = IDelegate(_delegateAddress);
   }
 
-  function callFallback() {
-    
+  function callFallback(address _addr) {
+    (bool success, bytes memory data) = _addr.call(
+      abi.encodeWithSignature("notAFunction()"");
+    );
+
+    emit Response(success, data);
   }
 }
