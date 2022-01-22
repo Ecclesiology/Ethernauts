@@ -9,13 +9,13 @@ contract HackDelegate {
   IDelegate = delegateAddress;
   event Response(bool success, bytes data);
 
-  constructor(IDelegate _delegateAddress){
+  constructor(IDelegate _delegateAddress) public {
     delegateAddress = IDelegate(_delegateAddress);
   }
 
-  function callFallback(address _addr) {
+  function callFallback(address _addr) public {
     (bool success, bytes memory data) = _addr.call(
-      abi.encodeWithSignature("notAFunction()"");
+      abi.encodeWithSignature("notAFunction()");
     );
 
     emit Response(success, data);
