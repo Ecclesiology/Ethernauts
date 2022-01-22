@@ -1,5 +1,5 @@
 require("dotenv").config();
-const delegateAbi = hre.artifacts.readArtifact("Delegate")
+const delegateAbi = hre.artifacts.readArtifact("Delegation")
 const provider = new hre.ethers.providers.JsonRpcProvider( process.env.RINKEBY_URL );
 const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
