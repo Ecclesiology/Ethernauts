@@ -1,9 +1,10 @@
 require("dotenv").config();
-const delegateAbi = hre.artifacts.readArtifact("Delegation")
+
 const provider = new hre.ethers.providers.JsonRpcProvider( process.env.RINKEBY_URL );
 const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 const main = async () => {
+  const delegateAbi = await hre.artifacts.readArtifact("contracts/Delegate\.sol:Delegation");
   const delegateContract = await new hre.ethers.Contract("0xF529B82545A17D9fa5af95a17F391aef6e95c93E", delegateAbi.abi, wallet);
   console.log("Delegate contract: " + delegateContract.address);
 
