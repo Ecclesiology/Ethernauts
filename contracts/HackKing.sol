@@ -9,7 +9,7 @@ contract HackKing {
   }
 
   function crownMe(uint _amount) public {
-    (bool success, ) = msg.sender.call.value(_amount)("");
+    (bool success, ) = kingContract.call.value(_amount)("");
     require(success, "Transfer failed.");
   }
 
