@@ -2,9 +2,9 @@
 pragma solidity ^0.6.0;
 
 contract HackForce {
-  address forceAddress;
+  address payable forceAddress;
 
-  constructor(address _forceAddress) public {
+  constructor(address payable _forceAddress) public {
     forceAddress = _forceAddress;
   }
 
