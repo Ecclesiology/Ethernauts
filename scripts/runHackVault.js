@@ -13,10 +13,10 @@ const main = async () => {
   console.log(`Password aquired: ${(hre.ethers.utils.toUtf8String(txn1))}`);
 
 
-  let password = hre.ethers.utils.toUtf8String(txn1).toString()
+  let password = hre.ethers.utils.toUtf8String(txn1)
   console.log("Password stored")
 
-  let txn2 = await vaultContract.unlock(password);
+  let txn2 = await vaultContract.unlock(txn1);
   console.log("Unlocking...")
   await txn2.wait();
   console.log("Vault unlocked.")
