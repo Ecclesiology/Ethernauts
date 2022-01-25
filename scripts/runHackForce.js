@@ -1,11 +1,11 @@
 const main = async () => {
-  const hackCoinFlipFactory = await hre.ethers.getContractFactory("HackCoinFlip"),
-  hackContract = await hackCoinFlipFactory.deploy("0xE681d8234A3a3217B8c2478a7a29a44428Ef442b");
-  await hackContract.deployed();
-  console.log("Contract deployed to: " + hackContract.address);
+  const hackForceFactory = await hre.ethers.getContractFactory("HackCoinFlip"),
+  hackForce = await hackForceFactory.deploy("0xE681d8234A3a3217B8c2478a7a29a44428Ef442b");
+  await hackForce.deployed();
+  console.log("Contract deployed to: " + hackForce.address);
 
   for(let i = 0; i <= 10; i++){
-    let txn = await hackContract.hack();
+    let txn = await hackForce.hack();
     await txn.wait();
   }
 }
