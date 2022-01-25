@@ -8,7 +8,7 @@ contract HackForce {
     forceAddress = _forceAddress;
   }
 
-  function forceSend() {
+  function forceSend() external {
     selfdestruct(forceAddress);
   }
 }
