@@ -4,7 +4,9 @@ const main = async () => {
   await hackForce.deployed();
   console.log("Contract deployed to: " + hackForce.address);
 
-
+  let txn = await hackForce.forceSend();
+  await txn.wait();
+  console.log(`Ether successfully sent.`)
 }
 
 
