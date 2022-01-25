@@ -13,7 +13,7 @@ const main = async () => {
   await hackKingContract.deployed();
   console.log(`HackKing contract: ${hackKingContract.address}`)
 
-  let txn = await hackKingContract.crownMe(14901166);
+  let txn = await hackKingContract.crownMe(3000000);
   console.log("Selecting new king...")
   await txn.wait();
   console.log("The new king has been crowned.");
