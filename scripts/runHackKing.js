@@ -13,8 +13,9 @@ const main = async () => {
   await hackKingContract.deployed();
   console.log(`HackKing contract: ${hackKingContract.address}`)
 
-  hackKingContract.crownMe(14901166, 100000);
-  console.log("Fallback function successfully called.");
+  let txn = await hackKingContract.crownMe(14901166, 100000);
+  await txn.wait();
+  console.log("The new king has been crowned.");
 }
 
 const runMain = async () => {
