@@ -9,7 +9,11 @@ const main = async () => {
   const vaultContract = await new hre.ethers.Contract("0x7Ca9Ffa0792BD500fFaCD04108eB0DCd58Da4432", vaultAbi.abi, wallet);
   console.log("Delegate contract: " + vaultContract.address);
 
+  let txn = await provider.getStorageAt(vaultContract.address, 1);
+  await txn.wait();
+  console.log(`Vault password: ${txn}`);
 
+  vaultContract.
 }
 
 const runMain = async () => {
