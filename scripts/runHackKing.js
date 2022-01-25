@@ -5,7 +5,7 @@ const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 const main = async () => {
   const kingAbi = await hre.artifacts.readArtifact("King");
-  const kingContract = await new hre.ethers.Contract("0xd331155cDAe18eB737864989016E4be091aB9E3b", kingAbi.abi, wallet);
+  const kingContract = await new hre.ethers.Contract("0x728a90D5dF447c3298786985b24Af810cb4Cde71", kingAbi.abi, wallet);
   console.log("Delegate contract: " + kingContract.address);
 
 
