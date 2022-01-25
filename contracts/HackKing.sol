@@ -8,7 +8,7 @@ contract HackKing {
     kingContract = _kingContract
   }
 
-  function crownMe(uint value) {
+  function crownMe(uint value) public {
     address(kingContract).call.value(value)
   }
 
