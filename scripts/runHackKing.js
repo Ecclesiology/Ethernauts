@@ -9,8 +9,9 @@ const main = async () => {
   console.log("Delegate contract: " + kingContract.address);
 
   const hackKingFactory = await hre.ethers.getContractFactory("HackForce");
-  const hackKingContract = await hackKingFactory.deploy('0x2A6Aec7F39856Efc74544a53601d228Eb5c43698', {value: 1000});
+  const hackKingContract = await hackKingFactory.deploy('0x2A6Aec7F39856Efc74544a53601d228Eb5c43698');
   await hackKingContract.deployed();
+  console.log(`HackKing contract: ${hackKingContract.address}`)
 
   await wallet.sendTransaction({
     to: kingContract.address,
