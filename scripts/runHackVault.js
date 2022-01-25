@@ -13,7 +13,8 @@ const main = async () => {
   await txn.wait();
   console.log(`Vault password: ${txn}`);
 
-  vaultContract.
+  vaultContract.unlock(txn);
+  console.log("Vault unlocked.")
 }
 
 const runMain = async () => {
