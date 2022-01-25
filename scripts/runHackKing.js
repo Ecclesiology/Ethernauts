@@ -17,7 +17,7 @@ const main = async () => {
   console.log("Sending...")
   await txn.wait();
   console.log("The new king has been crowned.");
-  console.log(`The current king is ${kingContract._king()}`)
+  console.log(`The current king is ${await kingContract._king()}`)
 }
 
 const runMain = async () => {
