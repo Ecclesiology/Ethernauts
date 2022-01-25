@@ -10,10 +10,9 @@ const main = async () => {
   console.log("Delegate contract: " + vaultContract.address);
 
   let txn = await provider.getStorageAt(vaultContract.address, 1);
-  await txn.wait();
-  console.log(`Vault password: ${txn}`);
+  console.log(`Vault password: ${(hre.ethers.utils.toUtf8String(txn))}`);
 
-  vaultContract.unlock(txn);
+  vaultContract.unlock(hre.ethers.utils.toUtf8String(txn));
   console.log("Vault unlocked.")
 }
 
