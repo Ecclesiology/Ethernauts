@@ -9,11 +9,11 @@ const main = async () => {
   console.log("King contract: " + kingContract.address);
 
   const hackReentranceFactory = await hre.ethers.getContractFactory("HackReentrance");
-  const hackKingContract = await hackReentranceFactory.deploy("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C");
-  await hackKingContract.deployed();
-  console.log(`HackKing contract: ${hackKingContract.address}`)
+  const hackReentranceContract = await hackReentranceFactory.deploy("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C");
+  await hackReentranceContract.deployed();
+  console.log(`HackKing contract: ${hackReentranceContract.address}`)
 
-  let txn = await hackKingContract.crownMe({value: "100000000000000000"});
+  let txn = await hackReentranceContract.crownMe({value: "100000000000000000"});
   console.log("Selecting new king...")
   await txn.wait();
   console.log("The new king has been crowned.");
