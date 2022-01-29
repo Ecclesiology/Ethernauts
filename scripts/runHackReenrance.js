@@ -13,7 +13,7 @@ const main = async () => {
   await hackReentranceContract.deployed();
   console.log(`HackReentrance contract: ${hackReentranceContract.address}`)
 
-  let txn = await hackReentranceContract.crownMe({value: "100000000000000000"});
+  let txn = await hackReentranceContract.becomeDonor();
   console.log("Donating...")
   await txn.wait();
   console.log("Donation complete.");
