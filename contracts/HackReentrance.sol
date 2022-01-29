@@ -10,7 +10,7 @@ contract HackReentrance {
   IReentrance public reentranceAddress;
 
 
-  constructor(IReentance _reentranceAddress) public payable {
+  constructor(IReentrance _reentranceAddress) public payable {
     reentranceAddress = IReetrance(_reentranceAddress);
   }
 
