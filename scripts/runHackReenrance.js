@@ -17,7 +17,7 @@ const main = async () => {
   console.log("Donating...")
   await txn.wait();
   console.log("Donation complete.");
-  console.log(`The current king is ${await reentranceContract._king()}`)
+  console.log(`Reentrance balance: ${await reentranceContract.balanceOf(reentranceContract.address)}`)
 }
 
 const runMain = async () => {
