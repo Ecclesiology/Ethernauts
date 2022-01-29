@@ -18,7 +18,7 @@ contract HackReentrance {
     reentranceAddress.donate.value(amountToWithdraw)(address(this));
   }
 
-  function startAttack() {
+  function startAttack() public {
     reentranceAddress.withdraw(amountToWithdraw);
   }
 
