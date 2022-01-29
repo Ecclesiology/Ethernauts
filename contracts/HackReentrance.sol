@@ -7,7 +7,7 @@ interface IReentrance {
 }
 
 contract HackReentrance {
-  IReentrance public reentranceAddress
+  IReentrance public reentranceAddress;
 
 
   constructor(IReentance _reentranceAddress) public payable {
