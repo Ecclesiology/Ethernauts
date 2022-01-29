@@ -7,12 +7,14 @@ interface IReentrance {
 }
 
 contract HackReentrance {
-  IReentrance public reentrnaceAddress
-  
+  IReentrance public reentranceAddress
+
 
   constructor(IReentance _reentranceAddress) public payable {
-    reentranceAddress
+    reentranceAddress = IReetrance(_reentranceAddress);
   };
 
-
+  function becomeDonor() public {
+    reentrance
+  }
 }
