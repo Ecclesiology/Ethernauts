@@ -15,6 +15,6 @@ contract HackReentrance {
   };
 
   function becomeDonor() public {
-    reentrance
+    reentranceAddress.donate.value(msg.value)(address(this));
   }
 }
