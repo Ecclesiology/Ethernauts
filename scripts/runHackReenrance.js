@@ -6,17 +6,17 @@ const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 const main = async () => {
   const kingAbi = await hre.artifacts.readArtifact("Reentrnace");
   const kingContract = await new hre.ethers.Contract("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C", kingAbi.abi, wallet);
-  console.log("King contract: " + kingContract.address);
+  console.log("Reentrance contract: " + kingContract.address);
 
   const hackReentranceFactory = await hre.ethers.getContractFactory("HackReentrance");
   const hackReentranceContract = await hackReentranceFactory.deploy("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C");
   await hackReentranceContract.deployed();
-  console.log(`HackKing contract: ${hackReentranceContract.address}`)
+  console.log(`HackReentrance contract: ${hackReentranceContract.address}`)
 
   let txn = await hackReentranceContract.crownMe({value: "100000000000000000"});
-  console.log("Selecting new king...")
+  console.log("Donating...")
   await txn.wait();
-  console.log("The new king has been crowned.");
+  console.log("Donation complete.");
   console.log(`The current king is ${await kingContract._king()}`)
 }
 
