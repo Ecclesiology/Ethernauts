@@ -9,7 +9,7 @@ const main = async () => {
   console.log(`Reentrance contract: ${reentranceContract.address}`);
 
   const hackReentranceFactory = await hre.ethers.getContractFactory("HackReentrance");
-  const hackReentranceContract = await hackReentranceFactory.deploy("0x41187F846cA0Ef1227309Fdc040fae153207C689", {value: (hre.ethers.utils.parseUnits("100", 12))});
+  const hackReentranceContract = await hackReentranceFactory.deploy("0x41187F846cA0Ef1227309Fdc040fae153207C689", {value: (hre.ethers.utils.parseUnits("1.0"))});
   await hackReentranceContract.deployed();
   console.log(`HackReentrance contract: ${hackReentranceContract.address}`)
 
