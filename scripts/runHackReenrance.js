@@ -13,9 +13,9 @@ const main = async () => {
   await hackReentranceContract.deployed();
   console.log(`HackReentrance contract: ${hackReentranceContract.address}`)
 
-  let txn = await hackReentranceContract.becomeDonor();
+  //let txn = await hackReentranceContract.becomeDonor();
   console.log("Donating...")
-  await txn.wait();
+  //await txn.wait();
   console.log("Donation complete.");
   let txn2 = await hackReentranceContract.startAttack();
   console.log("Initiating reentrance...");
