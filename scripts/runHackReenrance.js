@@ -17,10 +17,6 @@ const main = async () => {
   console.log("Donating...")
   await txn.wait();
   console.log("Donation complete.");
-  let txn2 = await hackReentranceContract.startAttack();
-  console.log("Initiating reentrance...");
-  await txn2.wait();
-  console.log(`Reentrance complete.`)
   console.log(`Reentrance contract balance: ${await reentranceContract.balanceOf(reentranceContract.address.balance)}`)
 }
 
