@@ -8,7 +8,7 @@ interface IReentrance {
 
 contract HackReentrance {
   IReentrance public reentranceAddress;
-  uint public amountToWithdraw = 1 szabo;
+  uint public amountToWithdraw = 1 ether;
 
   constructor(IReentrance _reentranceAddress) public payable {
     reentranceAddress = IReentrance(_reentranceAddress);
