@@ -11,7 +11,7 @@ contract HackReentrance {
 
 
   constructor(IReentrance _reentranceAddress) public payable {
-    reentranceAddress = IReetrance(_reentranceAddress);
+    reentranceAddress = IReentrance(_reentranceAddress);
   }
 
   function becomeDonor() public {
