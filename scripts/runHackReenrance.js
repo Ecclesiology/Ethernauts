@@ -4,7 +4,7 @@ const provider = new hre.ethers.providers.JsonRpcProvider( process.env.RINKEBY_U
 const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 const main = async () => {
-  const kingAbi = await hre.artifacts.readArtifact("King");
+  const kingAbi = await hre.artifacts.readArtifact("Reentrnace");
   const kingContract = await new hre.ethers.Contract("0x728a90D5dF447c3298786985b24Af810cb4Cde71", kingAbi.abi, wallet);
   console.log("King contract: " + kingContract.address);
 
