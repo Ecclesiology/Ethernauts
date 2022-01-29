@@ -2,8 +2,8 @@
 pragma solidity ^0.6.0;
 
 interface IReentrance {
-  function donate(address _to) public payable;
-  function withdraw(uint _amount) public;
+  function donate(address _to) external payable;
+  function withdraw(uint _amount) external;
 }
 
 contract HackReentrance {
