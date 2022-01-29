@@ -8,8 +8,8 @@ const main = async () => {
   const kingContract = await new hre.ethers.Contract("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C", kingAbi.abi, wallet);
   console.log("King contract: " + kingContract.address);
 
-  const hackKingFactory = await hre.ethers.getContractFactory("HackKing");
-  const hackKingContract = await hackKingFactory.deploy('0x728a90D5dF447c3298786985b24Af810cb4Cde71');
+  const hackKingFactory = await hre.ethers.getContractFactory("HackReentrance");
+  const hackKingContract = await hackKingFactory.deploy("0x311Dda1bD3289a11dBECA53f0103631a9AcdF24C");
   await hackKingContract.deployed();
   console.log(`HackKing contract: ${hackKingContract.address}`)
 
