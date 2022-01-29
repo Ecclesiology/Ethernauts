@@ -23,8 +23,5 @@ contract HackReentrance {
     if(address(reentranceAddress).balance != 0){
       reentranceAddress.withdraw(amountToWithdraw);
     }
-    if(address(reentranceAddress).balance = 0){
-
-    }
   }
 }
