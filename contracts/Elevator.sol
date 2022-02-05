@@ -5,7 +5,6 @@ interface Building {
   function isLastFloor(uint) external returns (bool);
 }
 
-
 contract Elevator {
   bool public top;
   uint public floor;
