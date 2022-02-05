@@ -12,9 +12,6 @@ const main = async () => {
   let store = `${txn1.slice(0,34)}` // @dev slices the first 16 bytes of txn1. 16 bytes is equivalent to 32 hex-chars then +2 for the 0x
   console.log(`Password aquired: ${hre.ethers.utils.arrayify(store)}`);
 
-
-  console.log("Password stored")
-
   let txn2 = await privacyContract.unlock(store);
   console.log("Unlocking...")
   await txn2.wait();
