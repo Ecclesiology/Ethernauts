@@ -13,7 +13,7 @@ contract HackElevator {
     elevator = IElevator(_elevator);
   }
 
-  function getToLastFloor() {
+  function getToLastFloor() public {
     elevator.goTo(0);
   }
 
