@@ -6,7 +6,7 @@ interface IElevator {
 }
 
 contract HackElevator {
-  bool public switch;
+  bool public firstFloor = false;
   IElevator elevator;
 
   constructor(IElevator _elevator){
