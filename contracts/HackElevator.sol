@@ -9,7 +9,7 @@ contract HackElevator {
   bool public firstFloor = false;
   IElevator elevator;
 
-  constructor(IElevator _elevator){
+  constructor(IElevator _elevator) public {
     elevator = IElevator(_elevator);
   }
 
